@@ -31,11 +31,11 @@ class Visit(models.Model):
             )
         )
 
-    def get_duration(visit): 
-        return (datetime.now(timezone.utc).replace(microsecond=0) - visit.entered_at).seconds
+    def get_duration(self): 
+        return (datetime.now(timezone.utc).replace(microsecond=0) - self.entered_at).seconds
 
-    def format_duration(duration):
-        return time.strftime("%Hч %Mмин", time.gmtime(duration))
+    def format_duration(self):
+        return time.strftime("%Hч %Mмин", time.gmtime(self))
 
-    def is_visit_long(visit, minutes=60):
-        return Visit.get_duration(visit) / 60 > minutes
+    def is_visit_long(self, minutes=60):
+        return Visit.get_duration(self) / 60 > minutes

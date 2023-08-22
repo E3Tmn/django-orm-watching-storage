@@ -5,8 +5,8 @@ from django.shortcuts import render
 
 def storage_information_view(request):
     non_closed_visits = []
-    active_visit = Visit.objects.filter(leaved_at=None)
-    for person in active_visit:
+    active_visits = Visit.objects.filter(leaved_at=None)
+    for person in active_visits:
         non_closed_visits.append(
             {
                 'who_entered': f'{person.passcard}',

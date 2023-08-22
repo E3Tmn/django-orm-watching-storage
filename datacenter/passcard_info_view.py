@@ -5,8 +5,7 @@ from django.shortcuts import get_object_or_404
 
 
 def passcard_info_view(request, passcode):
-    passcard = Passcard.objects.all()[0]
-    owner_name = get_object_or_404(Passcard, passcode=passcode)
+    passcard = get_object_or_404(Passcard, passcode=passcode)
     all_visit_pass = Visit.objects.filter(passcard=owner_name)
     this_passcard_visits = []
     for one_visit in all_visit_pass:
